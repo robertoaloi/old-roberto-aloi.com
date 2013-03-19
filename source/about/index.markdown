@@ -17,4 +17,4 @@ target="_blank">tryerlang.org</a>.
 Photography and food lover, he spends most  of his day converting
 coffee beans into code. Follow him
 on <a href="http://www.twitter.com/#!/robertoaloi" target="_blank">Twitter</a> or
-on <a href="http://github.com/prof3ta" target="_blank">GitHub</a>.
+on <a href="http://github.com/robertoaloi" target="_blank">GitHub</a>.
