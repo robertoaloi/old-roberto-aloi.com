@@ -9,8 +9,7 @@ footer: true
 <a href="#" class="thumb author"><img src="/images/author.png" alt="Roberto Aloi" /></a>
 
 Roberto Aloi is a Software Engineer and Erlanger
-from <a href="http://en.wikipedia.org/wiki/Sicily"
-target="_blank">Sicily</a>. He's also the author
+from Sicily. He's also the author
 of <a href="http://www.tryerlang.org"
 target="_blank">tryerlang.org</a>.
 
