@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: erlang | Roberto Aloi]]></title>
+  <link href="http://robertoaloi.github.com/blog/categories/erlang/atom.xml" rel="self"/>
+  <link href="http://robertoaloi.github.com/"/>
+  <updated>2013-07-14T13:34:39+02:00</updated>
+  <id>http://robertoaloi.github.com/</id>
+  <author>
+    <name><![CDATA[Roberto Aloi]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Create and deploy your Erlang / Cowboy Application on Heroku in 30 minutes]]></title>
+    <link href="http://robertoaloi.github.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku/"/>
+    <updated>2013-07-13T22:25:00+02:00</updated>
+    <id>http://robertoaloi.github.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku</id>
+    <content type="html"><![CDATA[<div style="text-align:center">
+  <img src="http://robertoaloi.github.com/images/herloku.png" alt="Herloku" /></a>
+</div>
+
+
+<br />
+
+
+<p><a href="http://www.erlang.org">Erlang</a> is a programming language used to build massively scalable soft real-time systems with requirements on high availability.</p>
+
+<p><a href="https://github.com/extend/cowboy">Cowboy</a> is a small, fast and modular HTTP server written in Erlang.</p>
+
+<p><a href="https://www.heroku.com/">Heroku</a> is a cloud application platform which allows you to deploy and scale your own application at pleasure.</p>
+
+<p>In this post, we will write an Erlang/Cowboy Web Application from scratch, deploying it on Heroku. Since Heroku <a href="https://devcenter.heroku.com/articles/usage-and-billing#750-free-dyno-hours-per-app">offers a free tier for deploying web apps</a>, this will cost you nothing. Also, the entire process should take no more than half an hour.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>You have <a href="http://git-scm.com/">git</a> installed on your machine.</li>
+<li>You have <a href="https://www.erlang-solutions.com/downloads/download-erlang-otp">Erlang</a> installed on your machine. In this example I will be using R15B01.</li>
+<li>You are familiar with the basic concepts of <a href="http://erlang.org/doc/">Erlang and OTP</a></li>
+<li>You have a free account on <a href="https://www.heroku.com/">Heroku</a>.</li>
+<li>You have <a href="https://toolbelt.heroku.com/">the Heroku start-kit for your OS</a> installed.</li>
+</ul>
+
+
+<h2>Summary</h2>
+
+<ul>
+<li><a href="#rebar">Create the skeleton of an Erlang app using Rebar</a></li>
+<li><a href="#heroku">Create a Heroku application</a></li>
+<li><a href="#cowboy">Use Cowboy to create a simple web app</a></li>
+<li><a href="#compile">Compile and run your application locally</a></li>
+<li><a href="#config">Configure your Heroku app</a></li>
+<li><a href="#deploy">Deploy your Erlang application on Heroku</a></li>
+<li><a href="#profile">Profile your deployed Erlang application</a></li>
+</ul>
+
+
+<p><a id="rebar"></a></p>
+
+<h3>Create the skeleton of an Erlang app using Rebar</h3>
+
+<p><a href="https://github.com/rebar/rebar">Rebar</a> is the de-facto standard build-tool for Erlang projects.</p>
+
+<p>Fetch rebar from Github and bootstrap it:</p>
+
+<pre>
+$ git clone https://github.com/rebar/rebar.git
+$ cd rebar
+$ ./bootstrap
+$ cd ..
+</pre>
+
+
+<p>Initialize a new git repository and use rebar to create the skeleton for a new Erlang app. I decided to call my application <em>erlblog</em>. Call your application differently, replacing every occurrence of <em>erlblog</em> with your favourite application name in the instructions below. Please note that this is <strong>not</strong> optional, since two applications cannot have the same name on Heroku and you don't dare to clash with my own application.</p>
+
+<pre>
+$ git init erlblog
+$ cd erlblog
+$ cp ../rebar/rebar .
+$ ./rebar create-app appid=erlblog
+</pre>
+
+
+<p>Commit what you have done in git:</p>
+
+<pre>
+$ git add rebar src
+$ git commit -m "Add rebar skeleton"
+</pre>
+
+
+<p><a id="heroku"></a></p>
+
+<h3>Create a Heroku application</h3>
+
+<p>Login into Heroku using the <em>heroku</em> command from the terminal.</p>
+
+<pre>
+$ heroku login
+</pre>
+
+
+<p>Use your Heroku email and password to login.</p>
+
+<p>Now create a new Heroku app, using the Erlang buildpack from <a href="https://github.com/archaelus">@archaelus</a>:</p>
+
+<pre>
+$ heroku create erlblog --stack cedar --buildpack https://github.com/archaelus/heroku-buildpack-erlang
+</pre>
+
+
+<p><a id="cowboy"></a></p>
+
+<h3>Use Cowboy to create a simple web app</h3>
+
+<p>Add the <em>Cowboy</em> web server as a rebar dependency:</p>
+
+<pre>
+$ cat rebar.config
+
+{deps, [
+        {cowboy, "0.8.4", {git, "https://github.com/extend/cowboy.git", {tag, "0.8.4"}}}
+       ]}.
+</pre>
+
+
+<p>Add <em>cowboy</em> to the list of applications in your <strong>.app.src</strong> file. Also, set the <em>http_port</em> environment variable to <em>8080</em> (see next paragraphs).</p>
+
+<pre>
+$ cat src/erlblog.app.src
+
+{application, erlblog,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  cowboy
+                 ]},
+  {mod, { erlblog_app, []}},
+  {env, [{http_port, 8080}]}
+ ]}.
+</pre>
+
+
+<p>Modify the <strong>start/2</strong> function from the <strong>erlblog_app</strong> module so that Cowboy starts a pool of acceptors when the erlblog application is started. Configure the Cowboy dispatcher with a single dispatching rule, routing all requests to <strong>'/'</strong> to the <strong>erlblog_handler</strong> (see below).</p>
+
+<p>Heroku assigns random ports to your application and uses the OS environment variable <em>$PORT</em> to inform you about the port on which your web server should listen to. Therefore, in the following code we read that environment variable, defaulting to port 8080 in case the environment variable is not specified. This is useful, for example, if you want to try your web server locally before deploying it on Heroku.</p>
+
+<pre>
+$ cat src/erlblog_app.erl
+
+-module(erlblog_app).
+
+-behaviour(application).
+
+%% Application callbacks
+-export([start/2, stop/1]).
+
+-define(C_ACCEPTORS,  100).
+%% ===================================================================
+%% Application callbacks
+%% ===================================================================
+
+start(_StartType, _StartArgs) ->
+    Routes    = routes(),
+    Dispatch  = cowboy_router:compile(Routes),
+    Port      = port(),
+    TransOpts = [{port, Port}],
+    ProtoOpts = [{env, [{dispatch, Dispatch}]}],
+    {ok, _}   = cowboy:start_http(http, ?C_ACCEPTORS, TransOpts, ProtoOpts),
+    erlblog_sup:start_link().
+
+stop(_State) ->
+    ok.
+
+%% ===================================================================
+%% Internal functions
+%% ===================================================================
+routes() ->
+    [
+     {'_', [
+            {"/", erlblog_handler, []}
+           ]}
+    ].
+
+port() ->
+    case os:getenv("PORT") of
+        false ->
+            {ok, Port} = application:get_env(http_port),
+            Port;
+        Other ->
+            Other
+    end.
+</pre>
+
+
+<p>Let's now implement a basic HTTP Cowboy handler, which simply replies with a 200 status code and a notorious welcoming message to any incoming request:</p>
+
+<pre>
+$ cat src/erlblog_handler.erl
+
+-module(erlblog_handler).
+
+-export([init/3]).
+-export([handle/2]).
+-export([terminate/3]).
+
+init(_Transport, Req, []) ->
+    {ok, Req, undefined}.
+
+handle(Req, State) ->
+    {ok, Req2} = cowboy_req:reply(200, [], <<"Hello world!">>, Req),
+    {ok, Req2, State}.
+
+terminate(_Reason, _Req, _State) ->
+    ok.
+</pre>
+
+
+<p>Finally, let's create an interface module which will be responsible for starting your <em>erlblog</em> application together with all its dependencies.</p>
+
+<pre>
+$ cat src/erlblog.erl
+
+-module(erlblog).
+
+-export([start/0]).
+
+start() ->
+    ok = application:start(crypto),
+    ok = application:start(ranch),
+    ok = application:start(cowboy),
+    ok = application:start(erlblog).
+</pre>
+
+
+<p><a id="compile"></a></p>
+
+<h3>Compile and run your application locally</h3>
+
+<p>Compile the <em>erlblog</em> application using rebar:</p>
+
+<pre>
+$ ./rebar get-deps compile
+</pre>
+
+
+<p>Start the application and verify that everything works as expected:</p>
+
+<pre>
+$ erl -pa ebin deps/*/ebin -s erlblog
+</pre>
+
+
+<p>From the Erlang shell, type:</p>
+
+<pre>
+1> application:which_applications().
+</pre>
+
+
+<p>The erlblog application should be included in the output.</p>
+
+<p>Finally, point your browser to:</p>
+
+<pre>
+http://localhost:8080
+</pre>
+
+
+<p>And verify that the string <em>"Hello World!"</em> is there.</p>
+
+<p>You can use <strong>Ctrl-G q</strong> to exit the Erlang shell.</p>
+
+<p>If everything works as expected, commit everything to git:</p>
+
+<pre>
+$ git add rebar.config src
+git ci -m "Include Cowboy skeleton"
+</pre>
+
+
+<p><a id="config"></a></p>
+
+<h3>Configure your Heroku app</h3>
+
+<p>You need to tell Heroku that you're going to deploy an Erlang Application. To do so, you need to create a <em>Procfile</em> file, containing your start-up script:</p>
+
+<pre>
+$ cat Procfile
+
+web: erl -pa ebin deps/*/ebin -noshell -noinput -s erlblog
+</pre>
+
+
+<p>Commit your changes to git:</p>
+
+<pre>
+$ git add Procfile
+$ git ci -m "Add Procfile"
+</pre>
+
+
+<p>You also want to specify that your application requires Erlang R15B01:</p>
+
+<pre>
+$ cat .preferred_otp_version
+
+echo OTP_R15B01 > .preferred_otp_version
+</pre>
+
+
+<p>Commit your changes to git:</p>
+
+<pre>
+$ git add .preferred_otp_version
+$ git ci -m "Specify R15B01 as Erlang version"
+</pre>
+
+
+<p><a id="deploy"></a></p>
+
+<h3>Deploy your Erlang application on Heroku</h3>
+
+<p>That's the beautiful part:</p>
+
+<pre>
+$ git push heroku master
+</pre>
+
+
+<p>You should now be able to access the erlblog application at:</p>
+
+<pre>
+http://erlblog.herokuapp.com
+</pre>
+
+
+<p>If something does not work as expected, you might want to verify the logs for your Heroku app:</p>
+
+<pre>
+$ heroku logs
+</pre>
+
+
+<p><a id="profile"></a></p>
+
+<h3>Profile your deployed Erlang application</h3>
+
+<p>Let's now verify how many requests our erlblog application can handle. Please note that to run the steps below, you need <a href="http://httpd.apache.org/docs/2.2/programs/ab.html">ab</a> and <a href="http://www.gnuplot.info/">gnuplot</a> installed on your machine.</p>
+
+<p>Using ApacheBench, perform 5000 HTTP requests against your new web server, using 20 concurrent requests. Store the output in the <em>gnuplot.dat</em> file.</p>
+
+<pre>
+$ ab -n 5000 -c 20 -g gnuplot.dat http://erlblog.herokuapp.com/
+
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking erlblog.herokuapp.com (be patient)
+Completed 500 requests
+Completed 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
+
+
+Server Software:        Cowboy
+Server Hostname:        erlblog.herokuapp.com
+Server Port:            80
+
+Document Path:          /
+Document Length:        12 bytes
+
+Concurrency Level:      20
+Time taken for tests:   71.473 seconds
+Complete requests:      5000
+Failed requests:        0
+Write errors:           0
+Total transferred:      615000 bytes
+HTML transferred:       60000 bytes
+Requests per second:    69.96 [#/sec] (mean)
+Time per request:       285.891 [ms] (mean)
+Time per request:       14.295 [ms] (mean, across all concurrent requests)
+Transfer rate:          8.40 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      121  130  46.4    127    1317
+Processing:   126  154  60.0    140    1176
+Waiting:      125  153  60.0    139    1162
+Total:        248  284  75.7    268    1495
+
+Percentage of the requests served within a certain time (ms)
+  50%    268
+  66%    275
+  75%    282
+  80%    286
+  90%    307
+  95%    343
+  98%    441
+  99%    617
+ 100%   1495 (longest request)
+</pre>
+
+
+<p>Using our Heroku free tier (1 single dyno worker), our Cowboy Web Server managed to complete all <strong>5000 requests</strong>, allowing <strong>~70 requests per second</strong>. 90% of the requests have been served in about <strong>300 ms</strong>. Of course, such a good result has been possible only because we surely have been hitting some kind of cache in the Heroku servers. Still, not bad for a free hosting solution for a simple Erlang applications.</p>
+
+<p>We can visualize the above results using Gnuplot:</p>
+
+<pre>
+$ gnuplot
+
+gnuplot> plot "gnuplot.dat" using 9 smooth sbezier with lines title "Cowboy Heroku Benchmarking"
+</pre>
+
+
+
+
+<div style="text-align:center">
+  <img src="http://robertoaloi.github.com/images/gnuplot.png" alt="Gnuplot" /></a>
+</div>
+
+
+<br />
+
+
+<p>The complete source code for the <em>erlblog</em> application is available <a href="https://github.com/robertoaloi/erlblog">here</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How they tried to fool tryerlang.org]]></title>
+    <link href="http://robertoaloi.github.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org/"/>
+    <updated>2010-10-14T00:00:00+02:00</updated>
+    <id>http://robertoaloi.github.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org</id>
+    <content type="html"><![CDATA[<h2>Preface</h2>
+
+
+<p><a title="tryerlang.org" href="http://tryerlang.org" target="_blank">tryerlang.org</a> is an <em>interactive Erlang Shell</em> which allows users to try the power of Erlang directly in a browser, without requiring them to install an Erlang runtime system on their machine. Even if intended for Erlang newbies, tryerlang.org has been subjected to a countless number of attacks conducted by Erlang experts who wanted to circumvent its sandboxing mechanism and to bring down the Erlang node running the application. I must admit that going through the tryerlang.org's logs is being an highly interesting and constructive experience.</p>
+
+<p>In this blog post I will present one of the most elaborated attacks performed on tryerlang.org. The attack, which exploits the Erlang <em>External Term Representation</em>, has been performed by a former <a href="http://www.erlang-solutions.com" target="_blank">Erlang Solutions</a>' employee who had access to the tryerlang.org source code. To understand how the attack works, we need to introduce the Erlang <em>External Term Representation</em>.</p>
+
+<h2>External Term Representation</h2>
+
+
+<p>In Distributed Erlang, terms can be transferred from an Erlang node to another one using the so-called <em>binary</em> format. Generic terms are encoded in binary from the sender using the built-in function <code>term_to_binary/1</code> and restored from the receiver using the complementary function <code>binary_to_term/2</code>. A binary message looks like this:</p>
+
+<pre>
+<<131,100,0,6,112,105,103,101,111,110>>
+</pre>
+
+
+<p>Which, as you can see, represents the binary encoding of the atom <code>pigeon</code>.</p>
+
+<pre>
+1&gt; term_to_binary(pigeon).
+&lt;&lt;131,100,0,6,112,105,103,101,111,110&gt;&gt;
+2&gt; binary_to_term(&lt;&lt;131,100,0,6,112,105,103,101,111,110&gt;&gt;).
+pigeon
+</pre>
+
+
+<p>The <em>External Term Representation</em> of Erlang terms is extensively documented in <a title="Erlang External Term Representation" href="http://www.erlang.org/doc/apps/erts/erl_ext_dist.html" target="_blank">the official Erlang Documentation</a>. Let's see how the attacker used this concept in his own interest.</p>
+
+<h2>Halting the Erlang Node</h2>
+
+
+<p>To stop the Erlang node running tryerlang.org, the attacker tries at first the following command:</p>
+
+<pre>
+&gt; erlang:halt().
+</pre>
+
+
+<p>This function, documented <a title="Erlang Halt" href="http://www.erlang.org/doc/man/erlang.html#halt-0" target="_blank">here</a>, is supposed to <em>halt</em> an Erlang runtime system, indicating a normal exit to the calling environment. The function has been disabled in tryerlang.org for security reasons, so the only result the user get is the following annoying message:</p>
+
+<pre>
+"This functionality has been disabled for security reasons in tryerlang.org.".
+</pre>
+
+
+<p>So, the Erlang node is still up and attacker prepares himself a good cup of Swedish coffee. After a couple of minutes playing with the tryerlang.org shell, the attcker notices that tryerlang.org allows you to define custom <a title="Erlang Funs" href="http://www.erlang.org/doc/programming_examples/funs.html" target="_blank">funs</a>. Then, the intuition. A <em>fun</em>, as any other Erlang term, <a title="export_ext" href="http://www.erlang.org/doc/apps/erts/erl_ext_dist.html#id83276" target="_blank">can be encoded using the External Terms Representation</a>. The encoded fun could then be executed. This could hopefully fool the sandboxing mechanism protecting the tryerlang.org and could open a world of possibilities to the attacker.</p>
+
+<p>According to the documentation, the external representation of the fun (in the <code>fun M:F/A</code> format) is the following:</p>
+
+<pre>
+113 | Module | Function | Arity
+</pre>
+
+
+<p>Where <code>Module</code> and <code>Function</code> are atoms and <code>Arity</code> is an integer.</p>
+
+<p>Atoms themselves can be encoded using the <a title="atom ext" href="http://www.erlang.org/doc/apps/erts/erl_ext_dist.html#ATOM_EXT" target="_blank">ATOM_EXT</a> format:</p>
+
+<pre>
+100 | Len | AtomName
+</pre>
+
+
+<p>Where <code>Len</code> is the length of <code>AtomName</code>, expressed using two bytes.</p>
+
+<p>For the atom <code>erlang</code>, which is composed of 6 characters (the letters <code>e</code>, <code>r</code>, <code>l</code>, <code>a</code>, <code>n</code> and <code>g</code>) we obtain:</p>
+
+<pre>
+100 | 0, 6 | 101, 114, 108, 97, 110, 103
+</pre>
+
+
+<p>Where the integers in the third section are the ASCII codes for each of the letters composing the word "erlang".</p>
+
+<p>Applying the same reasoning to the atom <code>halt</code>, we obtain:</p>
+
+<pre>
+100 | 0, 4 | 104, 97, 108, 116
+</pre>
+
+
+<p>Finally, the arity (an integer) can be encoded using the <a title="small integer ext" href="http://www.erlang.org/doc/apps/erts/erl_ext_dist.html#id80902" target="_blank">SMALL_INTEGER_EXT</a> format:</p>
+
+<pre>
+97 | Int
+</pre>
+
+
+<p>So, in our case (arity = 0) we obtain:</p>
+
+<pre>
+97 | 0
+</pre>
+
+
+<p>Putting all the pieces together and considering that, in the External Term Representation, the byte <code>131</code> needs to be prepended to the final term, we can encode the <code>erlang:halt/</code>0 function into binary, obtaining:</p>
+
+<pre>
+&lt;&lt;131,113,100,0,6,101,114,108,97,110,103,100,0,4,104,97,108,116,97,0&gt;&gt;
+</pre>
+
+
+<p>Let's verify that we didn't do any mistake:</p>
+
+<pre>
+&gt; binary_to_term(&lt;&lt;131,113,100,0,6,101,114,108,97,110,103,100,0,4,104,97,108,116,97,0&gt;&gt;).
+&gt; #Fun&lt;erlang.halt.0&gt;
+</pre>
+
+
+<p>Since tryerlang.org doesn't support copy-and-paste from the clipboard, we need to insert the sequence above by hand.</p>
+
+<p>We can bind the binary to a new variable:</p>
+
+<pre>
+&gt; B = &lt;&lt;131,113,100,0,6,101,114,108,97,110,103,100,0,4,104,97,108,116,97,0&gt;&gt;.
+</pre>
+
+
+<p>We now need to convert the binary into an Erlang term. Originally, tryerlang.org was allowing <a title="Erlang Safe Binary To Term" href="http://www.erlang.org/doc/man/erlang.html#binary_to_term-2" target="_blank">the binary_to_term function in safe mode</a>. This function has been now completely disabled after this attack. If you want to try what follows you will need to do it in your own Erlang shell.</p>
+
+<pre>
+&gt; F = binary_to_term(B, [safe]).
+</pre>
+
+
+<p>Let's now try to launch the fun as:</p>
+
+<pre>
+&gt;F().
+</pre>
+
+
+<p>Well, that didn't work as expected. tryerlang.org actually realized that the <code>erlang:halt/0</code> function was going to be called and the sandboxing mechanism managed to block the execution of the command. We need to do something slightly different. For example, we might pass the newly defined fun as an argument (after all, Erlang is a functional language) to a function who would take care of executing it. As an example, we could use the library function <code>lists:map/2</code>. There's only a little tiny problem with that. The <code>list:map/2</code> function, in fact, requires that the fun passed as an argument receives <em>exactly one argument</em>. This is not the case of the <code>erlang:halt/0</code> function, which has arity equal to zero. Fortunately <a href="http://www.erlang.org/doc/man/erlang.html#halt-1" target="_blank">an alternative version of <code>erlang:halt/0</code> exists, taking exactly one argument</a>. The external representation for the new function differs from the previous one by only the very last byte. Let's <em>forget</em> the old value of the variable <code>B</code> and let's bind it to the new binary:</p>
+
+<pre>
+&gt; f(B).
+&gt; B = &lt;&lt;131,113,100,0,6,101,114,108,97,110,103,100,0,4,104,97,108,116,97,1&gt;&gt;.
+</pre>
+
+
+<p>We can now pass the new fun as an argument to the <code>lists:map</code> function:</p>
+
+<pre>
+&gt; f(F).
+&gt; F = binary_to_term(B, [safe]).
+&gt;lists:map(F, [0]).
+</pre>
+
+
+<p>And the node dies. Well, in reality the node is almost immediately brought back by <a title="Erlang Heart" href="http://www.erlang.org/doc/man/heart.html" target="_blank">heart</a> which is listening for heartbeats from the Erlang node itself but, hey, I have to pay a beer to this guy! :)</p>
+
+<p>I wanted to share this experience with all of you. I consider it highly constructive, since it leads to reflect on several aspects of Erlang. Comments and feedback are more than welcome.</p>
+]]></content>
+  </entry>
+  
+</feed>
