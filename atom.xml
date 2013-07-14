@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Roberto Aloi]]></title>
-  <link href="http://robertoaloi.github.com/atom.xml" rel="self"/>
-  <link href="http://robertoaloi.github.com/"/>
-  <updated>2013-07-14T13:34:39+02:00</updated>
-  <id>http://robertoaloi.github.com/</id>
+  <link href="http://roberto-aloi.com/atom.xml" rel="self"/>
+  <link href="http://roberto-aloi.com/"/>
+  <updated>2013-07-14T13:35:48+02:00</updated>
+  <id>http://roberto-aloi.com/</id>
   <author>
     <name><![CDATA[Roberto Aloi]]></name>
     
@@ -15,11 +15,11 @@
   
   <entry>
     <title type="html"><![CDATA[Create and deploy your Erlang / Cowboy Application on Heroku in 30 minutes]]></title>
-    <link href="http://robertoaloi.github.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku/"/>
+    <link href="http://roberto-aloi.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku/"/>
     <updated>2013-07-13T22:25:00+02:00</updated>
-    <id>http://robertoaloi.github.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku</id>
+    <id>http://roberto-aloi.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku</id>
     <content type="html"><![CDATA[<div style="text-align:center">
-  <img src="http://robertoaloi.github.com/images/herloku.png" alt="Herloku" /></a>
+  <img src="http://roberto-aloi.com/images/herloku.png" alt="Herloku" /></a>
 </div>
 
 
@@ -431,7 +431,7 @@ gnuplot> plot "gnuplot.dat" using 9 smooth sbezier with lines title "Cowboy Hero
 
 
 <div style="text-align:center">
-  <img src="http://robertoaloi.github.com/images/gnuplot.png" alt="Gnuplot" /></a>
+  <img src="http://roberto-aloi.com/images/gnuplot.png" alt="Gnuplot" /></a>
 </div>
 
 
@@ -444,11 +444,11 @@ gnuplot> plot "gnuplot.dat" using 9 smooth sbezier with lines title "Cowboy Hero
   
   <entry>
     <title type="html"><![CDATA[Erlang User Conference 2013]]></title>
-    <link href="http://robertoaloi.github.com/blog/2013/04/29/euc/"/>
+    <link href="http://roberto-aloi.com/blog/2013/04/29/euc/"/>
     <updated>2013-04-29T13:35:00+02:00</updated>
-    <id>http://robertoaloi.github.com/blog/2013/04/29/euc</id>
+    <id>http://roberto-aloi.com/blog/2013/04/29/euc</id>
     <content type="html"><![CDATA[<div style="text-align:center">
-     <a href="http://www.erlang-factory.com/conference/ErlangUserConference2013" target="_blank"><img src="http://robertoaloi.github.com/images/seeyouthere.jpg" alt="EUC 2013" /></a>
+     <a href="http://www.erlang-factory.com/conference/ErlangUserConference2013" target="_blank"><img src="http://roberto-aloi.com/images/seeyouthere.jpg" alt="EUC 2013" /></a>
 </div>
 
 
@@ -462,12 +462,12 @@ Looking forward to see you all there.</p>
   
   <entry>
     <title type="html"><![CDATA[Erlang Workshop in Rome, Italy]]></title>
-    <link href="http://robertoaloi.github.com/blog/2013/02/26/erlang-workshop/"/>
+    <link href="http://roberto-aloi.com/blog/2013/02/26/erlang-workshop/"/>
     <updated>2013-02-26T12:43:00+01:00</updated>
-    <id>http://robertoaloi.github.com/blog/2013/02/26/erlang-workshop</id>
+    <id>http://roberto-aloi.com/blog/2013/02/26/erlang-workshop</id>
     <content type="html"><![CDATA[<div style="text-align:center">
 <a href="http://rome.codemotionworld.com/workshop/erlang-multi-core-e-massive-scalability/" target="_blank">
-<img style="width:60%" src="http://robertoaloi.github.com/images/erlang-workshop.png" alt="Erlang Workshop Codemotion - Rome 2013" />
+<img style="width:60%" src="http://roberto-aloi.com/images/erlang-workshop.png" alt="Erlang Workshop Codemotion - Rome 2013" />
 </a>
 </div>
 
@@ -483,9 +483,9 @@ Looking forward to see you all there.</p>
   
   <entry>
     <title type="html"><![CDATA[Ever wondered which application a given Erlang module belongs to?]]></title>
-    <link href="http://robertoaloi.github.com/blog/2012/12/12/ever-wondered-which-application-a-given-erlang-module-belongs-to/"/>
+    <link href="http://roberto-aloi.com/blog/2012/12/12/ever-wondered-which-application-a-given-erlang-module-belongs-to/"/>
     <updated>2012-12-12T16:12:00+01:00</updated>
-    <id>http://robertoaloi.github.com/blog/2012/12/12/ever-wondered-which-application-a-given-erlang-module-belongs-to</id>
+    <id>http://roberto-aloi.com/blog/2012/12/12/ever-wondered-which-application-a-given-erlang-module-belongs-to</id>
     <content type="html"><![CDATA[<p>For example, wouldn&#8217;t it be awesome to have the following:</p>
 
 <pre><code>./efind.sh cover
@@ -507,9 +507,9 @@ find $ROOTDIR -name $1.erl | awk -F / '{print $(NF-2)}' | awk -F - '{print $1}'<
   
   <entry>
     <title type="html"><![CDATA['Erlang and the Cloud' Codemotion slides available online]]></title>
-    <link href="http://robertoaloi.github.com/blog/2012/11/17/slides-from-my-erlang-codemotion-talk-available-online/"/>
+    <link href="http://roberto-aloi.com/blog/2012/11/17/slides-from-my-erlang-codemotion-talk-available-online/"/>
     <updated>2012-11-17T17:38:00+01:00</updated>
-    <id>http://robertoaloi.github.com/blog/2012/11/17/slides-from-my-erlang-codemotion-talk-available-online</id>
+    <id>http://roberto-aloi.com/blog/2012/11/17/slides-from-my-erlang-codemotion-talk-available-online</id>
     <content type="html"><![CDATA[<p>The slides from my <em>Erlang and the Cloud</em> talk are now available on <a href="https://speakerdeck.com/robertoaloi/erlang-and-the-cloud" target="_blank">Speakerdeck</a>.</p>
 
 <p>Enjoy.</p>
@@ -518,12 +518,12 @@ find $ROOTDIR -name $1.erl | awk -F / '{print $(NF-2)}' | awk -F - '{print $1}'<
   
   <entry>
     <title type="html"><![CDATA[Codemotion Venice 2012: Erlang and the Cloud]]></title>
-    <link href="http://robertoaloi.github.com/blog/2012/11/15/codemotion-venice-2012-erlang-and-the-cloud/"/>
+    <link href="http://roberto-aloi.com/blog/2012/11/15/codemotion-venice-2012-erlang-and-the-cloud/"/>
     <updated>2012-11-15T11:09:00+01:00</updated>
-    <id>http://robertoaloi.github.com/blog/2012/11/15/codemotion-venice-2012-erlang-and-the-cloud</id>
+    <id>http://roberto-aloi.com/blog/2012/11/15/codemotion-venice-2012-erlang-and-the-cloud</id>
     <content type="html"><![CDATA[<div style="text-align:center">
 <a href="http://www.codemotion.it" target="_blank">
-<img src="http://robertoaloi.github.com/images/codemotion-logo.png" alt="Codemotion Venice 2012" />
+<img src="http://roberto-aloi.com/images/codemotion-logo.png" alt="Codemotion Venice 2012" />
 </a>
 </div>
 
@@ -550,8 +550,8 @@ find $ROOTDIR -name $1.erl | awk -F / '{print $(NF-2)}' | awk -F - '{print $1}'<
 <h3>3. Giveaways</h3>
 
 <div style="text-align:center">
-<a href="http://robertoaloi.github.com/images/codemotion-giveaways.jpg" target="_blank">
-<img src="http://robertoaloi.github.com/images/codemotion-giveaways.jpg" alt="Erlang Giveaways" />
+<a href="http://roberto-aloi.com/images/codemotion-giveaways.jpg" target="_blank">
+<img src="http://roberto-aloi.com/images/codemotion-giveaways.jpg" alt="Erlang Giveaways" />
 </a>
 </div>
 
@@ -564,9 +564,9 @@ find $ROOTDIR -name $1.erl | awk -F / '{print $(NF-2)}' | awk -F - '{print $1}'<
   
   <entry>
     <title type="html"><![CDATA[How to Checkout GitHub Pull Requests Locally]]></title>
-    <link href="http://robertoaloi.github.com/blog/2012/11/12/checkout-github-pull-requests-locally/"/>
+    <link href="http://roberto-aloi.com/blog/2012/11/12/checkout-github-pull-requests-locally/"/>
     <updated>2012-11-12T10:36:00+01:00</updated>
-    <id>http://robertoaloi.github.com/blog/2012/11/12/checkout-github-pull-requests-locally</id>
+    <id>http://roberto-aloi.com/blog/2012/11/12/checkout-github-pull-requests-locally</id>
     <content type="html"><![CDATA[<p>I&#8217;ve recently bumped into the following useful <a href="https://gist.github.com/3342247" target="_blank">gist</a>, which I decided to share with all of you.</p>
 
 <p>It&#8217;s possible to instruct git to fetch pull requests together with the other project branches. Simply open the <code>.git/config</code> file for your project and add the following line under the <code>[remote "origin"]</code> section:</p>
@@ -595,9 +595,9 @@ find $ROOTDIR -name $1.erl | awk -F / '{print $(NF-2)}' | awk -F - '{print $1}'<
   
   <entry>
     <title type="html"><![CDATA[History of a Generation]]></title>
-    <link href="http://robertoaloi.github.com/blog/2012/09/12/history-of-a-generation/"/>
+    <link href="http://roberto-aloi.com/blog/2012/09/12/history-of-a-generation/"/>
     <updated>2012-09-12T18:36:00+02:00</updated>
-    <id>http://robertoaloi.github.com/blog/2012/09/12/history-of-a-generation</id>
+    <id>http://roberto-aloi.com/blog/2012/09/12/history-of-a-generation</id>
     <content type="html"><![CDATA[<p>I wanted to translate <a href="http://torto45.wordpress.com/2010/10/29/hello-world/" target="_blank">this blog post</a> into English, cause I believe it renders an almost perfect picture of Italy as it is today. This is a free translation and all the rights for the original blog post belong to the original author.</p>
 
 <p>When I was a child, I was told:</p>
@@ -638,9 +638,9 @@ find $ROOTDIR -name $1.erl | awk -F / '{print $(NF-2)}' | awk -F - '{print $1}'<
   
   <entry>
     <title type="html"><![CDATA[How they tried to fool tryerlang.org]]></title>
-    <link href="http://robertoaloi.github.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org/"/>
+    <link href="http://roberto-aloi.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org/"/>
     <updated>2010-10-14T00:00:00+02:00</updated>
-    <id>http://robertoaloi.github.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org</id>
+    <id>http://roberto-aloi.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org</id>
     <content type="html"><![CDATA[<h2>Preface</h2>
 
 
@@ -800,9 +800,9 @@ pigeon
   
   <entry>
     <title type="html"><![CDATA[Emacs Tips and Tricks]]></title>
-    <link href="http://robertoaloi.github.com/blog/2009/02/19/emacs-tips-and-tricks/"/>
+    <link href="http://roberto-aloi.com/blog/2009/02/19/emacs-tips-and-tricks/"/>
     <updated>2009-02-19T00:00:00+01:00</updated>
-    <id>http://robertoaloi.github.com/blog/2009/02/19/emacs-tips-and-tricks</id>
+    <id>http://roberto-aloi.com/blog/2009/02/19/emacs-tips-and-tricks</id>
     <content type="html"><![CDATA[<p>In this blog post I collect some miscellaneous Emacs tips and tricks.</p>
 
 <h2>Playing with Macros</h2>

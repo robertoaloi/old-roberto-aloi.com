@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: codemotion, | Roberto Aloi]]></title>
-  <link href="http://robertoaloi.github.com/blog/categories/codemotion-/atom.xml" rel="self"/>
-  <link href="http://robertoaloi.github.com/"/>
-  <updated>2013-07-14T13:34:39+02:00</updated>
-  <id>http://robertoaloi.github.com/</id>
+  <link href="http://roberto-aloi.com/blog/categories/codemotion-/atom.xml" rel="self"/>
+  <link href="http://roberto-aloi.com/"/>
+  <updated>2013-07-14T13:35:48+02:00</updated>
+  <id>http://roberto-aloi.com/</id>
   <author>
     <name><![CDATA[Roberto Aloi]]></name>
     
@@ -15,12 +15,12 @@
   
   <entry>
     <title type="html"><![CDATA[Erlang Workshop in Rome, Italy]]></title>
-    <link href="http://robertoaloi.github.com/blog/2013/02/26/erlang-workshop/"/>
+    <link href="http://roberto-aloi.com/blog/2013/02/26/erlang-workshop/"/>
     <updated>2013-02-26T12:43:00+01:00</updated>
-    <id>http://robertoaloi.github.com/blog/2013/02/26/erlang-workshop</id>
+    <id>http://roberto-aloi.com/blog/2013/02/26/erlang-workshop</id>
     <content type="html"><![CDATA[<div style="text-align:center">
 <a href="http://rome.codemotionworld.com/workshop/erlang-multi-core-e-massive-scalability/" target="_blank">
-<img style="width:60%" src="http://robertoaloi.github.com/images/erlang-workshop.png" alt="Erlang Workshop Codemotion - Rome 2013" />
+<img style="width:60%" src="http://roberto-aloi.com/images/erlang-workshop.png" alt="Erlang Workshop Codemotion - Rome 2013" />
 </a>
 </div>
 
@@ -36,9 +36,9 @@
   
   <entry>
     <title type="html"><![CDATA['Erlang and the Cloud' Codemotion slides available online]]></title>
-    <link href="http://robertoaloi.github.com/blog/2012/11/17/slides-from-my-erlang-codemotion-talk-available-online/"/>
+    <link href="http://roberto-aloi.com/blog/2012/11/17/slides-from-my-erlang-codemotion-talk-available-online/"/>
     <updated>2012-11-17T17:38:00+01:00</updated>
-    <id>http://robertoaloi.github.com/blog/2012/11/17/slides-from-my-erlang-codemotion-talk-available-online</id>
+    <id>http://roberto-aloi.com/blog/2012/11/17/slides-from-my-erlang-codemotion-talk-available-online</id>
     <content type="html"><![CDATA[<p>The slides from my <em>Erlang and the Cloud</em> talk are now available on <a href="https://speakerdeck.com/robertoaloi/erlang-and-the-cloud" target="_blank">Speakerdeck</a>.</p>
 
 <p>Enjoy.</p>
@@ -47,12 +47,12 @@
   
   <entry>
     <title type="html"><![CDATA[Codemotion Venice 2012: Erlang and the Cloud]]></title>
-    <link href="http://robertoaloi.github.com/blog/2012/11/15/codemotion-venice-2012-erlang-and-the-cloud/"/>
+    <link href="http://roberto-aloi.com/blog/2012/11/15/codemotion-venice-2012-erlang-and-the-cloud/"/>
     <updated>2012-11-15T11:09:00+01:00</updated>
-    <id>http://robertoaloi.github.com/blog/2012/11/15/codemotion-venice-2012-erlang-and-the-cloud</id>
+    <id>http://roberto-aloi.com/blog/2012/11/15/codemotion-venice-2012-erlang-and-the-cloud</id>
     <content type="html"><![CDATA[<div style="text-align:center">
 <a href="http://www.codemotion.it" target="_blank">
-<img src="http://robertoaloi.github.com/images/codemotion-logo.png" alt="Codemotion Venice 2012" />
+<img src="http://roberto-aloi.com/images/codemotion-logo.png" alt="Codemotion Venice 2012" />
 </a>
 </div>
 
@@ -79,8 +79,8 @@
 <h3>3. Giveaways</h3>
 
 <div style="text-align:center">
-<a href="http://robertoaloi.github.com/images/codemotion-giveaways.jpg" target="_blank">
-<img src="http://robertoaloi.github.com/images/codemotion-giveaways.jpg" alt="Erlang Giveaways" />
+<a href="http://roberto-aloi.com/images/codemotion-giveaways.jpg" target="_blank">
+<img src="http://roberto-aloi.com/images/codemotion-giveaways.jpg" alt="Erlang Giveaways" />
 </a>
 </div>
 

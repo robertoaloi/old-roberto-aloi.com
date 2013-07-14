@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: erlang | Roberto Aloi]]></title>
-  <link href="http://robertoaloi.github.com/blog/categories/erlang/atom.xml" rel="self"/>
-  <link href="http://robertoaloi.github.com/"/>
-  <updated>2013-07-14T13:34:39+02:00</updated>
-  <id>http://robertoaloi.github.com/</id>
+  <link href="http://roberto-aloi.com/blog/categories/erlang/atom.xml" rel="self"/>
+  <link href="http://roberto-aloi.com/"/>
+  <updated>2013-07-14T13:35:48+02:00</updated>
+  <id>http://roberto-aloi.com/</id>
   <author>
     <name><![CDATA[Roberto Aloi]]></name>
     
@@ -15,11 +15,11 @@
   
   <entry>
     <title type="html"><![CDATA[Create and deploy your Erlang / Cowboy Application on Heroku in 30 minutes]]></title>
-    <link href="http://robertoaloi.github.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku/"/>
+    <link href="http://roberto-aloi.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku/"/>
     <updated>2013-07-13T22:25:00+02:00</updated>
-    <id>http://robertoaloi.github.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku</id>
+    <id>http://roberto-aloi.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku</id>
     <content type="html"><![CDATA[<div style="text-align:center">
-  <img src="http://robertoaloi.github.com/images/herloku.png" alt="Herloku" /></a>
+  <img src="http://roberto-aloi.com/images/herloku.png" alt="Herloku" /></a>
 </div>
 
 
@@ -431,7 +431,7 @@ gnuplot> plot "gnuplot.dat" using 9 smooth sbezier with lines title "Cowboy Hero
 
 
 <div style="text-align:center">
-  <img src="http://robertoaloi.github.com/images/gnuplot.png" alt="Gnuplot" /></a>
+  <img src="http://roberto-aloi.com/images/gnuplot.png" alt="Gnuplot" /></a>
 </div>
 
 
@@ -444,9 +444,9 @@ gnuplot> plot "gnuplot.dat" using 9 smooth sbezier with lines title "Cowboy Hero
   
   <entry>
     <title type="html"><![CDATA[How they tried to fool tryerlang.org]]></title>
-    <link href="http://robertoaloi.github.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org/"/>
+    <link href="http://roberto-aloi.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org/"/>
     <updated>2010-10-14T00:00:00+02:00</updated>
-    <id>http://robertoaloi.github.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org</id>
+    <id>http://roberto-aloi.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org</id>
     <content type="html"><![CDATA[<h2>Preface</h2>
 
 

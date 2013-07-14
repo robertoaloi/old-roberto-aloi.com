@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: training | Roberto Aloi]]></title>
-  <link href="http://robertoaloi.github.com/blog/categories/training/atom.xml" rel="self"/>
-  <link href="http://robertoaloi.github.com/"/>
-  <updated>2013-07-14T13:34:39+02:00</updated>
-  <id>http://robertoaloi.github.com/</id>
+  <link href="http://roberto-aloi.com/blog/categories/training/atom.xml" rel="self"/>
+  <link href="http://roberto-aloi.com/"/>
+  <updated>2013-07-14T13:35:48+02:00</updated>
+  <id>http://roberto-aloi.com/</id>
   <author>
     <name><![CDATA[Roberto Aloi]]></name>
     
@@ -15,12 +15,12 @@
   
   <entry>
     <title type="html"><![CDATA[Erlang Workshop in Rome, Italy]]></title>
-    <link href="http://robertoaloi.github.com/blog/2013/02/26/erlang-workshop/"/>
+    <link href="http://roberto-aloi.com/blog/2013/02/26/erlang-workshop/"/>
     <updated>2013-02-26T12:43:00+01:00</updated>
-    <id>http://robertoaloi.github.com/blog/2013/02/26/erlang-workshop</id>
+    <id>http://roberto-aloi.com/blog/2013/02/26/erlang-workshop</id>
     <content type="html"><![CDATA[<div style="text-align:center">
 <a href="http://rome.codemotionworld.com/workshop/erlang-multi-core-e-massive-scalability/" target="_blank">
-<img style="width:60%" src="http://robertoaloi.github.com/images/erlang-workshop.png" alt="Erlang Workshop Codemotion - Rome 2013" />
+<img style="width:60%" src="http://roberto-aloi.com/images/erlang-workshop.png" alt="Erlang Workshop Codemotion - Rome 2013" />
 </a>
 </div>
 
