@@ -2,62 +2,66 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://roberto-aloi.com/blog/2009/02/19/emacs-tips-and-tricks/</loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:01+02:00</lastmod>
     </url>
     <url>
         <loc>http://roberto-aloi.com/blog/2010/10/14/how-they-tried-to-fool-tryerlang-org/</loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://roberto-aloi.com/blog/2012/09/12/history-of-a-generation/</loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://roberto-aloi.com/blog/2012/11/12/checkout-github-pull-requests-locally/</loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>
             http://roberto-aloi.com/blog/2012/11/15/codemotion-venice-2012-erlang-and-the-cloud/
         </loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>
             http://roberto-aloi.com/blog/2012/11/17/slides-from-my-erlang-codemotion-talk-available-online/
         </loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>
             http://roberto-aloi.com/blog/2012/12/12/ever-wondered-which-application-a-given-erlang-module-belongs-to/
         </loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://roberto-aloi.com/blog/2013/02/26/erlang-workshop/</loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://roberto-aloi.com/blog/2013/04/29/euc/</loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>
             http://roberto-aloi.com/blog/2013/07/13/create-deploy-erlang-cowboy-application-heroku/
         </loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://roberto-aloi.com/about/</loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://roberto-aloi.com/blog/archives/</loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
     </url>
     <url>
         <loc>http://roberto-aloi.com/</loc>
-        <lastmod>2013-07-14T13:33:40+02:00</lastmod>
+        <lastmod>2013-07-14T13:38:02+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://roberto-aloi.com/robots.txt</loc>
+        <lastmod>2013-07-18T23:40:23+02:00</lastmod>
     </url>
 </urlset>
