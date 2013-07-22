@@ -269,7 +269,7 @@ You also want to specify that your application requires Erlang R15B01:
 <pre>
 $ cat .preferred_otp_version
 
-echo OTP_R15B01 > .preferred_otp_version
+OTP_R15B01
 </pre>
 
 Commit your changes to git:
