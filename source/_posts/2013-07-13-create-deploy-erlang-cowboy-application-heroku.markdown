@@ -164,7 +164,7 @@ port() ->
             {ok, Port} = application:get_env(http_port),
             Port;
         Other ->
-            Other
+            list_to_integer(Other)
     end.
 </pre>
 
